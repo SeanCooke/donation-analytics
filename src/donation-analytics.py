@@ -151,6 +151,7 @@ def main():
 										repeat_donors_donations.append(tuple[1])
 										repeat_donors_donations_sum += tuple[1]
 						percentile_amt = int(round(nearestRankPercentile(repeat_donors_donations, percentile)))
+						repeat_donors_donations_sum = int(round(repeat_donors_donations_sum))
 						# format: cmte_id|zip_code|transaction_year|percentile_amt|repeat_donors_donations|number_of_repeat_donors
 						repeat_donor_file_line = cmte_id+delimiter+zip_code+delimiter+transaction_year+delimiter+str(percentile_amt)+delimiter+str(repeat_donors_donations_sum)+delimiter+str(number_of_repeat_donors)+"\n"
 						repeat_donors_file.write(repeat_donor_file_line)
