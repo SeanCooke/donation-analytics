@@ -23,7 +23,7 @@ Two dictionaries are used to store data as it streams in from `itcont.txt`.  Dic
 
 Data from `itcont.txt` is read line-by-line.  The percentile is read from the first line of `percentile.txt`.  After a line in `itcont.txt` is read, 1 record is added to both `donations` and `contributors`.
 
-A repeat donor is identified if `donations[zip_code|name]` has length greater than 1.  After a repeat donor is found, the corresponding list in `contributors` is scanned to identify other repeat donors and 1 line is written to `repeat-donors.txt`.  All donations from repeat donors for the corresponding candidate and year are stored in a list.  This list is used to calculate the specified percentile using [The Nearest Rank Method](https://en.wikipedia.org/wiki/Percentile#The_nearest-rank_method).  `percentile_amt` and `repeat_donors_donations_sum` are rounded to the nearest integer.
+A repeat donor is identified if `donations[zip_code|name]` has length greater than 1.  After a repeat donor is found, the corresponding list in `contributors` is scanned to identify other repeat donors and 1 line is written to `repeat-donors.txt`.  All donations from repeat donors for the corresponding candidate and year are stored in a list.  This list is used to calculate the specified percentile using [the nearest rank method](https://en.wikipedia.org/wiki/Percentile#The_nearest-rank_method).  `percentile_amt` and `repeat_donors_donations_sum` are rounded to the nearest integer.
 
 Lines written to `repeat-donors.txt` have the form:
 
