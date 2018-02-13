@@ -3,13 +3,11 @@
 Solution to [2018 Insight Data Engineering Coding Challenge](https://github.com/InsightDataScience/donation-analytics).
 
 ## Example
-
 `$ ./run.sh`
-	C00384516|02895|2018|333|333|1
-	C00384516|02895|2018|333|717|2
+    C00384516|02895|2018|333|333|1
+    C00384516|02895|2018|333|717|2
 
 ## Solution
-
 Two dictionaries are used to store data as it streams in from `itcont.txt`.  Dictionaries are used as they have have O(1) lookup time.
 
 1. donations: holds a list of `transaction_years`, `transaction_amts` tuples for a unique donor (`name` and `zip_code` combination)
