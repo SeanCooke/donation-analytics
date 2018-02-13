@@ -3,7 +3,10 @@
 Solution to [2018 Insight Data Engineering Coding Challenge](https://github.com/InsightDataScience/donation-analytics).
 
 ## Example
-`$ ./run.sh`
+~~~~
+$ ./run.sh
+cat output/repeat-donors.txt
+~~~~
 
     C00384516|02895|2018|333|333|1
     C00384516|02895|2018|333|717|2
