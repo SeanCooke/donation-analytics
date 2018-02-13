@@ -56,21 +56,21 @@ def isFloat(s):
 	return True
 
 """
-nearestRankPercentile returns the element in ints that is the pth percentile according
+nearestRankPercentile returns the element in floats that is the pth percentile according
 to the nearest-rank method
 
 Input Arguments:
-1. ints - list of integers
+1. floats - list of floats
 2. p - integer percentile between 1 and 100
 
 Return Values:
-1. integer pth percentile in ints according to nearest-rank method
+1. float pth percentile in floats according to nearest-rank method
 """
-def nearestRankPercentile(ints, p):
-	ints.sort()
-	N = len(ints)
-	n = int(math.ceil(p/100*N))
-	return ints[n]
+def nearestRankPercentile(floats, p):
+	floats.sort()
+	N = len(floats)
+	n = int(math.ceil(p/100.0*N))
+	return floats[n-1]
 
 def main():
 	if len(sys.argv) != 4:
@@ -89,8 +89,8 @@ def main():
 			sys.exit("ERROR: first line of "+percentile_location+" must be a single value")
 	if percentile < 1 or percentile > 100:
                 sys.exit("ERROR: first line of "+percentile_location+" must be a single value between 1 and 100") 
-	# donations is a dictionary which holds a list of transaction_years and transaction_amts from a
-	# unique donor (name and zip code combination)
+	# donations is a dictionary which holds a list of transaction_year and transaction_amt tuples
+	# from a unique donor (name and zip code combination)
 	#
 	# Key: zip_code+delimiter+name
 	#
@@ -130,6 +130,8 @@ def main():
 					transaction_amt = float(transaction_amt)
 					donations_key = zip_code+delimiter+name
 					contributors_key = cmte_id+delimiter+transaction_year
+					# converting transaction_year to an integer for O(1) comparisons
+					transaction_year = int(transaction_year)
 					# appending contributors_key to contributors
 					if contributors_key in contributors:
 						contributors[contributors_key].append(donations_key)
@@ -138,28 +140,28 @@ def main():
 					# updating donations
 					if donations_key in donations:
 						# this donor is a repeat donor
-						donations[donations_key].append((int(transaction_year), transaction_amt))
+						donations[donations_key].append((transaction_year, transaction_amt))
 						number_of_repeat_donors = 0
 						repeat_donors_donations = []
 						repeat_donors_donations_sum = 0
 						# look for contributions from other repeat donors
 						for donor in contributors[contributors_key]:
-							if donor in donations and len(donations[donor]) > 1:
+							if len(donations[donor]) > 1:
 								# this is a contribution to this candidate, this year, from a repeat donor
 								# add their information to repeat_donors_file
 								number_of_repeat_donors += 1
 								for year_amt in donations[donor]:
-									if year_amt[0] == int(transaction_year):
+									if year_amt[0] == transaction_year:
 										repeat_donors_donations.append(year_amt[1])
 										repeat_donors_donations_sum += year_amt[1]
 						percentile_amt = int(round(nearestRankPercentile(repeat_donors_donations, percentile)))
 						repeat_donors_donations_sum = int(round(repeat_donors_donations_sum))
 						# format: cmte_id|zip_code|transaction_year|percentile_amt|repeat_donors_donations|number_of_repeat_donors
-						repeat_donor_file_line = cmte_id+delimiter+zip_code+delimiter+transaction_year+delimiter+str(percentile_amt)+delimiter+str(repeat_donors_donations_sum)+delimiter+str(number_of_repeat_donors)+"\n"
+						repeat_donor_file_line = cmte_id+delimiter+zip_code+delimiter+str(transaction_year)+delimiter+str(percentile_amt)+delimiter+str(repeat_donors_donations_sum)+delimiter+str(number_of_repeat_donors)+"\n"
 						repeat_donors_file.write(repeat_donor_file_line)
 					else:
 						# this is the first time we have seen this unique donor
-						donations[donations_key] = [(int(transaction_year), transaction_amt)]
+						donations[donations_key] = [(transaction_year, transaction_amt)]
 	# close repeat_donors_file after itcont_location parsing
 	repeat_donors_file.close()
 
