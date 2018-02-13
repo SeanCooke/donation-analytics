@@ -146,10 +146,10 @@ def main():
 							if donor in donations and len(donations[donor]) > 1:
 								# this is a contribution to this candidate, this year, from a repeat donor
 								number_of_repeat_donors += 1
-								for tuple in donations[donor]:
-									if tuple[0] == int(transaction_year):
-										repeat_donors_donations.append(tuple[1])
-										repeat_donors_donations_sum += tuple[1]
+								for year_amt in donations[donor]:
+									if year_amt[0] == int(transaction_year):
+										repeat_donors_donations.append(year_amt[1])
+										repeat_donors_donations_sum += year_amt[1]
 						percentile_amt = int(round(nearestRankPercentile(repeat_donors_donations, percentile)))
 						repeat_donors_donations_sum = int(round(repeat_donors_donations_sum))
 						# format: cmte_id|zip_code|transaction_year|percentile_amt|repeat_donors_donations|number_of_repeat_donors
