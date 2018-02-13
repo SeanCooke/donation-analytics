@@ -11,7 +11,7 @@ C00384516|02895|2018|333|717|2
 ~~~~
 
 ## Solution
-Two dictionaries are used to store data as it streams in from `itcont.txt`.  Dictionaries are used as they have have O(1) lookup time.
+Two dictionaries are used to store data as it streams in from `itcont.txt`.  Dictionaries are used as they have O(1) lookup time.
 
 1. `donations`: holds a list of `transaction_years`, `transaction_amts` tuples for a unique donor (`name` and `zip_code` combination)
 	* Key: `zip_code|name`
