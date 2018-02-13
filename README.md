@@ -4,6 +4,7 @@ Solution to [2018 Insight Data Engineering Coding Challenge](https://github.com/
 
 ## Example
 `$ ./run.sh`
+
     C00384516|02895|2018|333|333|1
     C00384516|02895|2018|333|717|2
 
