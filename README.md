@@ -25,7 +25,7 @@ Data from `itcont.txt` is read line-by-line.  The percentile is read from the fi
 
 A repeat donor is identified if `donations[zip_code|name]` has with length greater than 1.  After a repeat donor is found, the corresponding list in `contributors` is scanned to identify other repeat donors and 1 line is written to `repeat-donors.txt`.  All donations from repeat donors for the corresponding candidate during the corresponding year are stored in a list.  The specified percentile is computed using [The Nearest Rank Method](https://en.wikipedia.org/wiki/Percentile#The_nearest-rank_method).  This value as well as `repeat_donors_donations_sum` is rounded to the nearest integer.
 
-Lines written to `repeat-donors.txt` is have the form:
+Lines written to `repeat-donors.txt` have the form:
 
 ~~~~
 cmte_id|zip_code|transaction_year|percentile_amt|repeat_donors_donations_sum|number_of_repeat_donors
