@@ -142,9 +142,11 @@ def main():
 						number_of_repeat_donors = 0
 						repeat_donors_donations = []
 						repeat_donors_donations_sum = 0
+						# look for contributions from other repeat donors
 						for donor in contributors[contributors_key]:
 							if donor in donations and len(donations[donor]) > 1:
 								# this is a contribution to this candidate, this year, from a repeat donor
+								# add their information to repeat_donors_file
 								number_of_repeat_donors += 1
 								for year_amt in donations[donor]:
 									if year_amt[0] == int(transaction_year):
