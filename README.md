@@ -28,5 +28,5 @@ A repeat donor is identified if donations[`zip_code|name`] has with length great
 The line that gets written to `repeat-donors.txt` is of the form:
 
 ~~~~
-cmte\_id|zip\_code|transaction\_year|percentile\_amt|repeat\_donors\_donations\_sum|number\_of\_repeat\_donors
+cmte_id|zip_code|transaction_year|percentile_amt|repeat_donors_donations_sum|number_of_repeat_donors
 ~~~~
