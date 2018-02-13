@@ -21,9 +21,9 @@ Two dictionaries are used to store data as it streams in from `itcont.txt`.  Dic
 	* Key: `cmte_id|transaction_year`
 	* Value: List of keys to donations
 
-Data from `itcont.txt` is read line-by-line.  The precentile is read from the first line of `percentile.txt`.  After a line in `itcont.txt` is read, 1 record is added to both `donations` and `contributors`.
+Data from `itcont.txt` is read line-by-line.  The percentile is read from the first line of `percentile.txt`.  After a line in `itcont.txt` is read, 1 record is added to both `donations` and `contributors`.
 
-A repeat donor is identified if donations[`zip_code|name`] has with length greater than 1.  After a repeat donor is found, the corresponding list in `contributors` is scanned to write a line to `repeat-donors.txt`.  All donoations from repeat donors for the corresponding candidate during the corresponding year are stored in a list.  The specified percentile is computed using [The Nearest Rank Method](https://en.wikipedia.org/wiki/Percentile#The_nearest-rank_method)
+A repeat donor is identified if donations[`zip_code|name`] has with length greater than 1.  After a repeat donor is found, the corresponding list in `contributors` is scanned to write a line to `repeat-donors.txt`.  All donations from repeat donors for the corresponding candidate during the corresponding year are stored in a list.  The specified percentile is computed using [The Nearest Rank Method](https://en.wikipedia.org/wiki/Percentile#The_nearest-rank_method)
 
 The line that gets written to `repeat-donors.txt` is of the form:
 
