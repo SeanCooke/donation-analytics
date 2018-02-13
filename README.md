@@ -14,7 +14,7 @@ Two dictionaries are used to store data as it streams in from `itcont.txt`.  Dic
 
 1. `donations`: holds a list of `transaction_year`, `transaction_amt` tuples for a unique donor (`name` and `zip_code` combination)
 	* Key: `zip_code|name`
-	* Value: list of (`transaction_year`, `transaction_amt`) tuples for the unique donor
+	* Value: list of `(transaction_year, transaction_amt)` tuples for the unique donor
 
 2. `contributors`: holds a list of donors for a given recipient and year
 	* Key: `cmte_id|transaction_year`
